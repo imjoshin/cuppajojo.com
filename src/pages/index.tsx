@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import { FaDiscord } from "react-icons/fa"
+import { Icon } from "../components/icon"
 
 const pageStyles = {
   color: "#232129",
@@ -147,7 +147,7 @@ const IndexPage: React.FC<PageProps> = () => {
       </h1>
       <p style={paragraphStyles}>
         Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎 <FaDiscord />
+        update in real-time. 😎 <Icon i="discord" />
       </p>
       <ul style={doclistStyles}>
         {docLinks.map(doc => (
