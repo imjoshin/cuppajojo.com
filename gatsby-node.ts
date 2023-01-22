@@ -1,6 +1,7 @@
+import type { GatsbyNode } from "gatsby"
 import redirects from "./redirects.json"
 
-exports.createPages = async ({ graphql, actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
   const { createRedirect } = actions;
 
   redirects.forEach(redirect =>

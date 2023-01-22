@@ -1,0 +1,37 @@
+{
+  "name": "gatsby-source-youtube-v3",
+  "version": "3.0.17",
+  "description": "Gatsby source to fetch data from Youtube API",
+  "repository": "https://github.com/dansunotori/gatsby-source-youtube-v3",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore __tests__",
+    "prepublish": "cross-env NODE_ENV=production npm run build"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsbyjs",
+    "gatsby-plugin",
+    "youtube"
+  ],
+  "author": "Jason Worley <jason@jasonincode.com>",
+  "contributors": [
+    "Aravind Iyer <aravindiyer@gmail.com>",
+    "Benedict Allerberger <info@bene.dev>",
+    "Alexander Golev <sasha.golev@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "gatsby-source-filesystem": "^4.17.0-next.0",
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^7.0.3",
+    "babel-polyfill": "^6.26.0"
+  }
+}
