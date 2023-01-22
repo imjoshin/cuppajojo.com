@@ -1,5 +1,7 @@
 import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+
 
 const pageStyles = {
   color: "#232129",
@@ -28,7 +30,11 @@ const NotFoundPage: React.FC<PageProps> = () => {
     <main style={pageStyles}>
       <h1 style={headingStyles}>Page not found</h1>
       <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
+        Sorry, we couldn’t find what you were looking for.
+        <br />
+        <br />
+        <StaticImage src="../images/jojo-irl-sad.png" alt="Sad Jojo" />
+        <br />
         <br />
         {process.env.NODE_ENV === "development" ? (
           <>
