@@ -1,10 +1,10 @@
 const React = require("react")
-const { LiveWrapper } = require("./src/components/live-wrapper")
+const { Layout } = require("./src/components/layout")
 
 exports.wrapPageElement = ({ element, props }) => {
   return (
-    <LiveWrapper>
+    <Layout>
       {element}
-    </LiveWrapper>
+    </Layout>
   )
 }

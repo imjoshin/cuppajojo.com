@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState } from "react"
+import { LivePopup } from "./live-popup"
 import * as styles from "./LiveWrapper.module.css"
 
 interface LiveWrapperProps {
   children: React.ReactNode,
 }
 
-type StatusType = { live: false } | {
+export type StatusType = { live: false } | {
   live: true,
   game: string,
   title: string,
@@ -36,7 +37,7 @@ export const LiveWrapper = ({ children }: LiveWrapperProps) => {
     fetchStatus()
 
     // fetch status every 30 seconds
-    const interval = setInterval(fetchStatus, 30 * 1000)
+    const interval = setInterval(fetchStatus, 5 * 1000)
 
     return () => {
       clearInterval(interval)
@@ -44,6 +45,7 @@ export const LiveWrapper = ({ children }: LiveWrapperProps) => {
   }, [])
 
   return <>
+    <LivePopup status={status} />
     {children}
   </>
 }

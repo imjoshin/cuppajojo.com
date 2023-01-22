@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background-color: #282b33;
+  color: #ffffff;
+}
+
+.layout {
+  font-family: "-apple-system, Roboto, sans-serif, serif";
+  padding: 32px;
+}

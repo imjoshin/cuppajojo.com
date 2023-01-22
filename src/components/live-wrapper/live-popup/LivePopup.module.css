@@ -1,0 +1,17 @@
+.livePopup {
+  border: 1px solid red;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  max-width: 400px;
+  transition: left 0.5s ease-in-out;
+  padding: 16px;
+}
+
+.livePopupHidden {
+  left: -400px;
+}
+
+.title {
+  font-size: 2rem;
+}
