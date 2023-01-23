@@ -4,7 +4,12 @@ body {
   color: #ffffff;
 }
 
+body,
+body * {
+  font-family: sans-serif;
+
+}
+
 .layout {
-  font-family: "-apple-system, Roboto, sans-serif, serif";
   padding: 32px;
 }
