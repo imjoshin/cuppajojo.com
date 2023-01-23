@@ -2,13 +2,16 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import { Home } from "../components/home"
+import { Layout } from "../components/layout"
 
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main>
-      <Home />
-    </main>
+    <Layout>
+      <main>
+        <Home />
+      </main>
+    </Layout>
   )
 }
 
