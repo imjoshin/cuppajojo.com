@@ -12,5 +12,6 @@
   aspect-ratio: 1;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   margin-bottom: 3rem;
 }
