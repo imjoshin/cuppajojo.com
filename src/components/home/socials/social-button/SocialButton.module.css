@@ -1,0 +1,21 @@
+.socialButton {
+  position: relative;
+  color: #fff;
+  transition: color 0.2s ease, top 0.4s;
+  top: 0;
+  padding: 1rem;
+}
+
+.socialButton:hover {
+  color: var(--accent-color);
+  top: 4px;
+}
+
+.socialIcon {
+  margin-bottom: 1rem;
+}
+
+
+.socialName {
+  text-align: center;
+}

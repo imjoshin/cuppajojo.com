@@ -1,0 +1,16 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 82px);
+}
+
+.homeImage {
+  max-width: 80%;
+  width: 512px;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 3rem;
+}

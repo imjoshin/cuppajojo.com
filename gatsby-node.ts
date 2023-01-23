@@ -41,3 +41,23 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions 
     })
   )
 }
+
+export const onCreateNode: GatsbyNode["onCreateNode"] = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+
+  // Find all Home images
+  if (node.parent) {
+    const parent = getNode(node.parent)
+
+    if (node.internal.type === `ImageSharp`) {
+      const absolutePath = parent!.absolutePath as string
+      const isHomeImage = absolutePath.indexOf("src/images/home") >= 0
+
+      createNodeField({
+        node,
+        name: `isHomeImage`,
+        value: isHomeImage,
+      })
+    }
+  }
+}

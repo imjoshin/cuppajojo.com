@@ -7,31 +7,31 @@
   },
   {
     "name": "Twitch",
-    "icon": "discord",
+    "icon": "twitch",
     "path": "/twitch",
     "redirect": "https://www.twitch.tv/CuppaJoJo_"
   },
   {
-    "name": "YouTube",
-    "icon": "discord",
+    "name": "Youtube",
+    "icon": "youtube",
     "path": "/youtube",
     "redirect": "https://www.youtube.com/@cuppajojo"
   },
   {
     "name": "Twitter",
-    "icon": "discord",
+    "icon": "twitter",
     "path": "/twitter",
     "redirect": "https://twitter.com/cuppajojo_"
   },
   {
-    "name": "TikTok",
-    "icon": "discord",
+    "name": "Tiktok",
+    "icon": "tiktok",
     "path": "/tiktok",
     "redirect": "https://www.tiktok.com/@cuppajojo_"
   },
   {
     "name": "Instagram",
-    "icon": "discord",
+    "icon": "instagram",
     "path": "/instagram",
     "redirect": "https://www.instagram.com/cuppajojo_/"
   }
