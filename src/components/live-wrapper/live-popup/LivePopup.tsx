@@ -20,8 +20,9 @@ export const LivePopup = ({ status }: LivePopupProps) => {
             backgroundImage: `url(${status.gameThumbnail})`
           }}></div>
           <div className={styles.streamInfo}>
+            <div className={styles.streamGame}>{status.game}</div>
             <div className={styles.streamTitle}>{status.title}</div>
-            <div className={styles.streamGame}>{status.game} | {status.viewers} Viewer{status.viewers === 1 ? '' : 's'}</div>
+            <div className={styles.streamViewers}>{status.viewers} Viewer{status.viewers === 1 ? '' : 's'}</div>
           </div>
         </div>
       </div>
