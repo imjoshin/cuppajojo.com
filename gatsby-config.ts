@@ -7,8 +7,11 @@ require("dotenv").config({
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `CuppaJoJo`,
+    image: 'src/images/jojo-head-small.png',
     siteUrl: `https://www.cuppajojo.com`,
+    description: `CuppaJojo is a variety streamer that loves to speedrun Super Mario Odyssey, build in Minecraft, and occasionally fail at chess.`,
     twitchUser: `CuppaJoJo_`,
+    twitterUser: `cuppajojo_`,
     donateUrl: `https://streamelements.com/cuppajojo_/tip`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
