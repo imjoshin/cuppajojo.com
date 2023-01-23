@@ -1,6 +1,7 @@
 import TwitchApi from "node-twitch";
 
 const TWITCH_NAME = "CuppaJoJo_"
+
 const THUMBNAIL_DIMENSIONS = {
   width: 1920 / 4,
   height: 1080 / 4,
@@ -35,6 +36,7 @@ export default async function handler(req, res) {
 
     response = {
       live: true,
+      user: channel.user_name,
       game: channel.game_name,
       gameThumbnail,
       title: channel.title,
