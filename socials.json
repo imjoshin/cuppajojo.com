@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Discord",
+    "icon": "discord",
+    "path": "/discord",
+    "redirect": "https://discord.gg/F44Tn5grzW"
+  },
+  {
+    "name": "Twitch",
+    "icon": "discord",
+    "path": "/twitch",
+    "redirect": "https://www.twitch.tv/CuppaJoJo_"
+  },
+  {
+    "name": "YouTube",
+    "icon": "discord",
+    "path": "/youtube",
+    "redirect": "https://www.youtube.com/@cuppajojo"
+  },
+  {
+    "name": "Twitter",
+    "icon": "discord",
+    "path": "/twitter",
+    "redirect": "https://twitter.com/cuppajojo_"
+  },
+  {
+    "name": "TikTok",
+    "icon": "discord",
+    "path": "/tiktok",
+    "redirect": "https://www.tiktok.com/@cuppajojo_"
+  },
+  {
+    "name": "Instagram",
+    "icon": "discord",
+    "path": "/instagram",
+    "redirect": "https://www.instagram.com/cuppajojo_/"
+  }
+]

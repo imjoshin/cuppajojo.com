@@ -2,6 +2,7 @@ import React from "react"
 import * as styles from "./LivePopup.module.css"
 import clsx from "clsx"
 import { StatusType } from "../LiveWrapper"
+import { graphql, useStaticQuery } from "gatsby"
 
 interface LivePopupProps {
   status: StatusType,
@@ -9,12 +10,24 @@ interface LivePopupProps {
 
 // TODO the animation out isn't clean, the content disappears. Oh well!
 export const LivePopup = ({ status }: LivePopupProps) => {
+  const { site } = useStaticQuery(
+    graphql`
+      query SiteMetaData {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+
   let popupContent = null;
 
   if (status.live) {
     popupContent = <>
       <div className={styles.content}>
-        <div className={styles.title}>CuppaJoJo is live!</div>
+        <div className={styles.title}>{site.siteMetadata.title} is live!</div>
         <div className={styles.stream}>
           <div className={styles.gameThumbnail} style={{
             backgroundImage: `url(${status.gameThumbnail})`
@@ -33,10 +46,8 @@ export const LivePopup = ({ status }: LivePopupProps) => {
     </>
   }
 
-  console.log(status)
-
   return (
-    <a href="https://www.twitch.tv/CuppaJoJo_" target="_blank">
+    <a href={`https://www.twitch.tv/${status.live ? status.user : ''}`} target="_blank">
       <div
         className={clsx(styles.livePopup, !status.live && styles.livePopupHidden)}
       >

@@ -8,6 +8,8 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `CuppaJoJo`,
     siteUrl: `https://www.cuppajojo.com`,
+    twitchUser: `CuppaJoJo_`,
+    donateUrl: `https://streamelements.com/cuppajojo_/tip`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

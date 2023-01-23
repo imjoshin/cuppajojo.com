@@ -9,6 +9,7 @@ interface LiveWrapperProps {
 
 export type StatusType = { live: false } | {
   live: true,
+  user: string,
   game: string,
   title: string,
   viewers: number,
@@ -37,8 +38,8 @@ export const LiveWrapper = ({ children }: LiveWrapperProps) => {
 
     fetchStatus()
 
-    // fetch status every 30 seconds
-    const interval = setInterval(fetchStatus, 5 * 1000)
+    // fetch status every 60 seconds
+    const interval = setInterval(fetchStatus, 60 * 1000)
 
     return () => {
       clearInterval(interval)

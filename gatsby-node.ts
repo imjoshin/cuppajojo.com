@@ -1,13 +1,43 @@
 import type { GatsbyNode } from "gatsby"
-import redirects from "./redirects.json"
+import socials from "./socials.json"
+
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({ actions }) => {
+  const { createTypes } = actions
+
+  // Explicitly define the siteMetadata {} object
+  // This way those will always be defined even if removed from gatsby-config.js
+
+  // Also explicitly define the Markdown frontmatter
+  // This way the "MarkdownRemark" queries will return `null` even when no
+  // blog posts are stored inside "content/blog" instead of returning an error
+  createTypes(`
+    type Social implements Node {
+      name: String
+      icon: String
+      path: String
+      redirect: String
+    }
+  `)
+}
+
+export const sourceNodes: GatsbyNode["sourceNodes"] = ({ actions: { createNode }, createNodeId, createContentDigest }) => {
+  socials.map(social => createNode({
+    ...social,
+    id: createNodeId(social.name),
+    internal: {
+      type: `Social`,
+      contentDigest: createContentDigest(social)
+    }
+  }));
+};
 
 export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
   const { createRedirect } = actions;
 
-  redirects.forEach(redirect =>
+  socials.forEach(social =>
     createRedirect({
-      fromPath: redirect.fromPath,
-      toPath: redirect.toPath,
+      fromPath: social.path,
+      toPath: social.redirect,
     })
   )
 }
