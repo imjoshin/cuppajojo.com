@@ -14,6 +14,7 @@ export type StatusType = { live: false } | {
   viewers: number,
   started: string,
   thumbnail: string,
+  gameThumbnail: string,
 }
 
 export const LiveWrapper = ({ children }: LiveWrapperProps) => {

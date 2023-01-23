@@ -1,7 +1,11 @@
 body {
+  --accent-color: #a471cc;
+  --background-color: #282b33;
+
   margin: 0;
-  background-color: #282b33;
+  background-color: var(--background-color);
   color: #ffffff;
+
 }
 
 body,

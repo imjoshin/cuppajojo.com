@@ -9,10 +9,38 @@ interface LivePopupProps {
 
 // TODO the animation out isn't clean, the content disappears. Oh well!
 export const LivePopup = ({ status }: LivePopupProps) => {
+  let popupContent = null;
+
+  if (status.live) {
+    popupContent = <>
+      <div className={styles.content}>
+        <div className={styles.title}>CuppaJoJo is live!</div>
+        <div className={styles.stream}>
+          <div className={styles.gameThumbnail} style={{
+            backgroundImage: `url(${status.gameThumbnail})`
+          }}></div>
+          <div className={styles.streamInfo}>
+            <div className={styles.streamTitle}>{status.title}</div>
+            <div className={styles.streamGame}>{status.game} | {status.viewers} Viewer{status.viewers === 1 ? '' : 's'}</div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.background} style={{
+        backgroundImage: `url(${status.thumbnail})`
+      }}></div>
+      <div className={styles.backdrop}></div>
+    </>
+  }
+
+  console.log(status)
+
   return (
-    <div className={clsx(styles.livePopup, !status.live && styles.livePopupHidden)}>
-      <div className={styles.title}>CuppaJoJo is live now!</div>
-      {JSON.stringify(status)}
-    </div>
+    <a href="https://www.twitch.tv/CuppaJoJo_" target="_blank">
+      <div
+        className={clsx(styles.livePopup, !status.live && styles.livePopupHidden)}
+      >
+        {popupContent}
+      </div>
+    </a>
   )
 }
