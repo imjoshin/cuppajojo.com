@@ -1,11 +1,11 @@
 import React from "react"
 import * as styles from "./LivePopup.module.css"
 import clsx from "clsx"
-import { StatusType } from "../LiveWrapper"
 import { graphql, useStaticQuery } from "gatsby"
+import { TwitchStatusType } from "../../../hooks/use-twitch-status"
 
 interface LivePopupProps {
-  status: StatusType,
+  status: TwitchStatusType,
 }
 
 // TODO the animation out isn't clean, the content disappears. Oh well!

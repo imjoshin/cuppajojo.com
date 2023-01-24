@@ -1,5 +1,6 @@
 import { relative } from "path"
 import React from "react"
+import { TwitchStatusProvider } from "../../hooks/use-twitch-status"
 import { LiveWrapper } from "../live-wrapper"
 import { StarBackground } from "../star-background"
 import * as styles from "./Layout.module.css"
@@ -22,11 +23,14 @@ export const Layout = ({ children, starField = true }: LayoutProps) => {
       </div>
     </>
   }
+
   return (
-    <div className={styles.layout}>
-      <LiveWrapper>
-        {renderChildren}
-      </LiveWrapper>
-    </div>
+    <TwitchStatusProvider>
+      <div className={styles.layout}>
+        <LiveWrapper>
+          {renderChildren}
+        </LiveWrapper>
+      </div>
+    </TwitchStatusProvider>
   )
 }
