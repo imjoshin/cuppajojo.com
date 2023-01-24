@@ -1,0 +1,41 @@
+.floater {
+  background-size: cover;
+  background-position: center;
+  border-radius: 2rem;
+  animation: floaterAnimationRotate 10s linear infinite;
+  width: 100%;
+  height: 100%;
+}
+
+.floaterContainer {
+  animation: floaterAnimationMove 10s linear;
+  position: absolute;
+  aspect-ratio: 16 / 9;
+  width: 10%;
+  max-width: 150px;
+  transform: translateX(-100%);
+}
+
+.floaterContainer:hover {
+  animation-play-state: paused;
+}
+
+@keyframes floaterAnimationRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes floaterAnimationMove {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
