@@ -1,0 +1,77 @@
+.spaceship {
+  /* display: flex; */
+  align-content: center;
+  position: relative;
+  animation-name: wobble;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.front,
+.passenger,
+.behind {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  /* width: 100%;
+  height: 100%; */
+  aspect-ratio: 1;
+  position: absolute;
+}
+
+.front {
+  background-image: url('../../images/spaceship-front.png')
+}
+
+.passenger {
+  aspect-ratio: 1;
+  background-size: contain;
+}
+
+/* This positioning is gross but whatevs for now */
+.passengerImage {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 45%;
+  height: 45%;
+  position: relative;
+  left: 27%;
+  top: 13%;
+}
+
+.behind {
+  background-image: url('../../images/spaceship-behind.png')
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(0%);
+  }
+
+  15% {
+    transform: translateX(-10%) rotate(-5deg);
+  }
+
+  30% {
+    transform: translateX(20%) translateY(8%) rotate(3deg);
+  }
+
+  45% {
+    transform: translateX(-15%)translateY(-5%) rotate(-3deg);
+  }
+
+  60% {
+    transform: translateX(10%) rotate(2deg);
+  }
+
+  75% {
+    transform: translateX(-5%) rotate(-1deg);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
