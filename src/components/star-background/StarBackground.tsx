@@ -1,4 +1,5 @@
 import React from "react"
+import { useRefSize } from "../../hooks/use-ref-size"
 import { StarField } from "./star-field"
 import * as styles from "./StarBackground.module.css"
 
@@ -8,17 +9,9 @@ interface StarBackgroundProps {
 
 export const StarBackground = ({ layers = 4 }: StarBackgroundProps) => {
   const ref = React.useRef<HTMLDivElement>();
-  const [width, setWidth] = React.useState<number>(512);
-  const [height, setHeight] = React.useState<number>(512);
+  const { width, height } = useRefSize(ref)
   const spread = 50;
   const duration = 45;
-
-  React.useLayoutEffect(() => {
-    if (!ref.current) return;
-
-    setWidth(ref.current.offsetWidth);
-    setHeight(ref.current.offsetHeight);
-  }, []);
 
   const starFields = Array(layers)
     .fill(0)
