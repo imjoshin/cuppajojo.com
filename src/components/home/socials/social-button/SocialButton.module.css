@@ -11,6 +11,12 @@
   top: 4px;
 }
 
+.socialButtonHighlight {
+  animation-name: bounce;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
 .socialIcon {
   margin-bottom: 1rem;
 }
@@ -18,4 +24,23 @@
 
 .socialName {
   text-align: center;
+}
+
+@keyframes bounce {
+
+  0%,
+  5%,
+  12%,
+  20%,
+  100% {
+    transform: translateY(0);
+  }
+
+  10% {
+    transform: translateY(-30px);
+  }
+
+  15% {
+    transform: translateY(-15px);
+  }
 }

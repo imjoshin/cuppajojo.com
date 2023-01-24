@@ -1,15 +1,15 @@
 [
   {
-    "name": "Discord",
-    "icon": "discord",
-    "path": "/discord",
-    "redirect": "https://discord.gg/F44Tn5grzW"
-  },
-  {
     "name": "Twitch",
     "icon": "twitch",
     "path": "/twitch",
     "redirect": "https://www.twitch.tv/CuppaJoJo_"
+  },
+  {
+    "name": "Discord",
+    "icon": "discord",
+    "path": "/discord",
+    "redirect": "https://discord.gg/F44Tn5grzW"
   },
   {
     "name": "Youtube",

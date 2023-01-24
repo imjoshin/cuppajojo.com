@@ -1,9 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
+import { useTwitchStatus } from "../../../hooks/use-twitch-status";
 import { SocialButton } from "./social-button";
 import * as styles from "./Socials.module.css"
 
 export const Socials = () => {
+  const twitchStatus = useTwitchStatus()
+
   // TODO handle these images better
   const socialsQuery = useStaticQuery(
     graphql`
@@ -23,7 +26,7 @@ export const Socials = () => {
 
   return (
     <div className={styles.socials}>
-      {socials.map(s => <SocialButton icon={s.icon} name={s.name} href={s.redirect} />)}
+      {socials.map(s => <SocialButton icon={s.icon} name={s.name} href={s.redirect} highlight={s.icon === "twitch" && twitchStatus.live} />)}
     </div>
   )
 }
