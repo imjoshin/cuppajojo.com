@@ -3,6 +3,8 @@
   align-content: center;
   position: relative;
   animation-name: wobble;
+  pointer-events: none;
+  z-index: 1000;
 }
 
 .spaceship,

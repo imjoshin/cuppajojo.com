@@ -11,4 +11,9 @@
   width: 512px;
   aspect-ratio: 1;
   margin-bottom: 3rem;
+  z-index: 1000;
+}
+
+.socials {
+  z-index: 1000;
 }

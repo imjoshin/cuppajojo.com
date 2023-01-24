@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
+import { ContentBackground } from "../content-background";
 import { Spaceship } from "../spaceship";
 import * as styles from "./Home.module.css"
 import { Socials } from "./socials";
@@ -32,6 +33,7 @@ export const Home = () => {
 
   return (
     <div className={styles.home}>
+      <ContentBackground />
       <Spaceship className={styles.homeImage} passenger={image} />
       <div className={styles.socials}>
         <Socials />

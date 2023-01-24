@@ -1,7 +1,5 @@
-import { relative } from "path"
 import React from "react"
 import { TwitchStatusProvider } from "../../hooks/use-twitch-status"
-import { ContentBackground } from "../content-background"
 import { LiveWrapper } from "../live-wrapper"
 import { StarBackground } from "../star-background"
 import * as styles from "./Layout.module.css"
@@ -9,22 +7,18 @@ import * as styles from "./Layout.module.css"
 interface LayoutProps {
   children: React.ReactNode,
   starField?: boolean,
-  content?: boolean,
 }
 
-export const Layout = ({ children, starField = true, content = true }: LayoutProps) => {
+export const Layout = ({ children, starField = true }: LayoutProps) => {
   let renderChildren = children
 
-  if (starField || content) {
+  if (starField) {
     renderChildren = <>
       <div style={{ position: 'relative', zIndex: 1 }}>
         {renderChildren}
       </div>
-      {starField && <div className={styles.background}>
+      {starField && <div className={styles.starBackground}>
         <StarBackground />
-      </div>}
-      {content && <div className={styles.background}>
-        <ContentBackground />
       </div>}
     </>
   }
