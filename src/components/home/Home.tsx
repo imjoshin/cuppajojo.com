@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ContentBackground } from "../content-background";
 import { Spaceship } from "../spaceship";
 import * as styles from "./Home.module.css"
@@ -26,7 +26,12 @@ export const Home = ({ hideSocials, hideCenterpiece, forcePassengerIndex }: Home
       }
     `
   )
-  const [passengerIndex] = useState(Math.floor(Math.random() * images.allImageSharp.nodes.length))
+  const [passengerIndex, setPassengerIndex] = useState(-1)
+
+  // update after first render so static file will pick a new one each time
+  useEffect(() => {
+    setPassengerIndex(Math.floor(Math.random() * images.allImageSharp.nodes.length))
+  }, [])
 
   const imageSources = images.allImageSharp.nodes.map(
     // @ts-ignore
@@ -34,7 +39,9 @@ export const Home = ({ hideSocials, hideCenterpiece, forcePassengerIndex }: Home
   )
 
   // TODO rotate somehow!
-  const image = imageSources[forcePassengerIndex !== undefined ? forcePassengerIndex : passengerIndex]
+  const image = passengerIndex >= 0
+    ? imageSources[forcePassengerIndex !== undefined ? forcePassengerIndex : passengerIndex]
+    : ""
 
   return (
     <div className={styles.home}>
