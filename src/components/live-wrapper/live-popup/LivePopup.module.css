@@ -68,7 +68,7 @@
   font-size: 0.7rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .livePopup {
     top: 16px;
     max-height: 100px;
