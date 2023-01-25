@@ -68,6 +68,60 @@
   font-size: 0.7rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .livePopup {
+    top: 16px;
+    max-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: top 0.5s ease-in-out;
+    left: 0;
+    right: 0;
+  }
+
+  .livePopup:hover {
+    top: 16px;
+  }
+
+  .livePopupHidden {
+    top: -400px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0;
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content {
+    display: flex;
+    padding: 8px;
+    /* align-items: stretch; */
+    flex-direction: row-reverse;
+  }
+
+  .stream {
+    display: flex;
+    align-items: stretch;
+    min-width: 50px;
+    width: 30%;
+    /* flex: 1; */
+  }
+
+  .gameThumbnail {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .streamInfo {
+    display: none;
+  }
+}
+
 .backdrop,
 .background {
   width: 100%;
