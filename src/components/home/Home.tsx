@@ -5,7 +5,12 @@ import { Spaceship } from "../spaceship";
 import * as styles from "./Home.module.css"
 import { Socials } from "./socials";
 
-export const Home = () => {
+interface HomeProps {
+  hideSocials?: boolean,
+  hideCenterpiece?: boolean,
+}
+
+export const Home = ({ hideSocials, hideCenterpiece }: HomeProps) => {
   // TODO handle these images better
   const images = useStaticQuery(
     graphql`
@@ -29,14 +34,12 @@ export const Home = () => {
   // TODO rotate somehow!
   const image = imageSources[0]
 
-  console.log(imageSources)
-
   return (
     <div className={styles.home}>
       <ContentBackground />
-      <Spaceship className={styles.homeImage} passenger={image} />
+      {!hideCenterpiece && <Spaceship className={styles.homeImage} passenger={image} />}
       <div className={styles.socials}>
-        <Socials />
+        {!hideSocials && <Socials />}
       </div>
     </div>
   )

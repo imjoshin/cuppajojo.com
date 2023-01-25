@@ -7,9 +7,10 @@ import * as styles from "./Layout.module.css"
 interface LayoutProps {
   children: React.ReactNode,
   starField?: boolean,
+  liveNotification?: boolean,
 }
 
-export const Layout = ({ children, starField = true }: LayoutProps) => {
+export const Layout = ({ children, starField = true, liveNotification = true }: LayoutProps) => {
   let renderChildren = children
 
   if (starField) {
@@ -23,12 +24,18 @@ export const Layout = ({ children, starField = true }: LayoutProps) => {
     </>
   }
 
+  if (liveNotification) {
+    renderChildren = (
+      <LiveWrapper>
+        {renderChildren}
+      </LiveWrapper>
+    )
+  }
+
   return (
     <TwitchStatusProvider>
       <div className={styles.layout}>
-        <LiveWrapper>
-          {renderChildren}
-        </LiveWrapper>
+        {renderChildren}
       </div>
     </TwitchStatusProvider>
   )
