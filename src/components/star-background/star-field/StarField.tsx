@@ -31,12 +31,14 @@ export const StarField = ({ numStars, duration, size, width, height }: StarField
   let boxShadow: string[] = []
 
   for (const star of stars) {
-    boxShadow.push(`${star.x}px ${star.y}px #FFFFFF`)
-    boxShadow.push(`${star.x + width}px ${star.y}px #FFFFFF`)
+    // push two so when the animation repeats, there's a star already in the same place
+    boxShadow.push(`${star.x}px ${star.y}px var(--box-shadow-size) var(--box-shadow-size) #FFFFFF`)
+    boxShadow.push(`${star.x + width}px ${star.y}px var(--box-shadow-size) var(--box-shadow-size) #FFFFFF`)
   }
 
   const style = {
-    "--size": `${size}px`,
+    "--box-shadow-size": `${size / 2}px`,
+    "--size": `0.1px`,
     "--fade": `${size}s`,
     "--duration": `${duration}s`,
     "--box-shadow": boxShadow.join(`, `),
