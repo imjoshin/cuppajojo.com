@@ -15,7 +15,7 @@ export const StarBackground = () => {
       <StarField
         key={index}
         size={5 - index}
-        numStars={(index + 1) * 20}
+        numStars={(index + 1) * 15}
         duration={(index + 1) * 10}
         width={width}
         height={height}
