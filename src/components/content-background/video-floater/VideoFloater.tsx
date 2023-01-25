@@ -19,9 +19,15 @@ const MOVE_DURATION = {
   min: 10,
 }
 
+const WIDTH_SIZE = {
+  max: 8,
+  min: 12,
+}
+
 export const VideoFloater = ({ image, id, height }: VideoFloaterProps) => {
   const [rotateDuration] = useState(`${Math.floor(Math.random() * (ROTATE_DURATION.max - ROTATE_DURATION.min + 1) + ROTATE_DURATION.min)}s`)
   const [moveDuration] = useState(`${Math.floor(Math.random() * (MOVE_DURATION.max - MOVE_DURATION.min + 1) + MOVE_DURATION.min)}s`)
+  const [width] = useState(Math.floor(Math.random() * (WIDTH_SIZE.max - WIDTH_SIZE.min + 1) + WIDTH_SIZE.min))
   const [cometMask] = useState(Math.floor(Math.random() * (7) + 1))
 
   const imageStyle = {
@@ -33,6 +39,7 @@ export const VideoFloater = ({ image, id, height }: VideoFloaterProps) => {
   const floaterStyle = {
     top: `${height}%`,
     '--move-duration': moveDuration,
+    '--width': `${width}%`,
   }
 
   return (

@@ -15,7 +15,7 @@
   animation: floaterAnimationMove var(--move-duration) linear;
   position: absolute;
   aspect-ratio: 16 / 9;
-  width: 10%;
+  width: var(--width);
   max-width: 150px;
   min-width: 80px;
   transform: translateX(-100%);
