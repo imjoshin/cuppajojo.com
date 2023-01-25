@@ -9,7 +9,7 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout liveNotification={false}>
       <main>
-        <Home hideSocials />
+        <Home hideSocials forcePassengerIndex={0} />
       </main>
     </Layout>
   )
