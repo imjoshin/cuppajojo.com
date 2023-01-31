@@ -30,8 +30,10 @@ export const StarBackground = () => {
       ref={ref}
       className={styles.starBackground}
       style={{
-        position: 'relative',
+        position: 'fixed',
         height: '100%',
+        width: '100%',
+        top: 0,
       }}
     >
       {starFields}
