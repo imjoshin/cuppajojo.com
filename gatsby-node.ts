@@ -85,6 +85,12 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions 
       toPath: social.redirect,
     })
   )
+
+  // TODO make this a config item
+  createRedirect({
+    fromPath: `/sub`,
+    toPath: `https://www.twitch.tv/subs/cuppajojo_`,
+  })
 }
 
 export const onCreateNode: GatsbyNode["onCreateNode"] = ({ node, getNode, actions }) => {
