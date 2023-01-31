@@ -27,8 +27,13 @@ export const VideoIcon = ({ videoId, thumbnail, title, duration }: VideoIconProp
   }
 
   return (
-    <a href={`https://youtu.be/${videoId}`} target="_blank" className={styles.videoIcon} style={imageStyle}>
-      <div className={styles.duration}>{convertDurationString(duration)}</div>
+    <a href={`https://youtu.be/${videoId}`} target="_blank" className={styles.videoContainer} >
+      <div className={styles.videoIcon} style={imageStyle}>
+        <div className={styles.duration}>{convertDurationString(duration)}</div>
+      </div>
+      <div className={styles.title}>
+        {title}
+      </div>
     </a>
   )
 }
