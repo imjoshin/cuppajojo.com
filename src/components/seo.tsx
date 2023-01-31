@@ -11,8 +11,8 @@ interface SEOProps {
 export const SEO = ({ title, description, path, children }: SEOProps) => {
   const { title: defaultTitle, description: defaultDescription, image, siteUrl, twitterUsername } = useSiteMetadata()
 
-  const finalTitle = title === defaultTitle
-    ? title
+  const finalTitle = !title || title === defaultTitle
+    ? defaultTitle
     : `${title} | ${defaultTitle}`
 
   const seo = {
