@@ -31,8 +31,17 @@ export default function ContentGroupPage({ data }: PageProps<DataProps>) {
     justifyContent: 'center',
   }
 
+  const titleStyle: React.CSSProperties = {
+    textAlign: 'center',
+    fontSize: '2rem',
+    margin: '3rem',
+  }
+
   return (
     <Layout>
+      <div style={titleStyle}>
+        {data.youtubeContentGroup.name}
+      </div>
       <div style={containerStyle}>
         {data.youtubeContentGroup.videos.map(video => (
           <VideoIcon
