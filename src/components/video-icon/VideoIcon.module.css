@@ -1,0 +1,28 @@
+.videoIcon {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+  animation: floaterAnimationRotate var(--rotate-duration) linear infinite;
+  width: 25%;
+  max-width: 300px;
+  min-width: 150px;
+  aspect-ratio: 16 / 9;
+  margin: 32px;
+  position: relative;
+  color: white;
+  transition: top 0.2s ease;
+  top: 0px;
+}
+
+.videoIcon:hover {
+  top: 2px;
+}
+
+.duration {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border-radius: 0.5rem;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "icon": "mario-spin",
+    "tags": [
+      "super-mario-odyssey",
+      "super mario odyssey",
+      "smo"
+    ],
+    "id": "smo",
+    "name": "Super Mario Odyssey"
+  },
+  {
+    "icon": "minecraft-jojo",
+    "tags": [
+      "minecraft",
+      "minecraftletsplay"
+    ],
+    "id": "minecraft",
+    "name": "Minecraft"
+  }
+]
