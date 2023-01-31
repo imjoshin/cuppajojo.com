@@ -16,6 +16,7 @@ type DataProps = {
       videoId: string,
       title: string,
       duration: string,
+      publishedAt: string,
     }[]
   }
 }
@@ -37,13 +38,18 @@ export default function ContentGroupPage({ data }: PageProps<DataProps>) {
     margin: '3rem',
   }
 
+  const videos = data.youtubeContentGroup.videos.sort((a, b) =>
+    // @ts-ignore
+    new Date(b.publishedAt) - new Date(a.publishedAt)
+  )
+
   return (
     <Layout>
       <div style={titleStyle}>
         {data.youtubeContentGroup.name}
       </div>
       <div style={containerStyle}>
-        {data.youtubeContentGroup.videos.map(video => (
+        {videos.map(video => (
           <VideoIcon
             key={video.videoId}
             videoId={video.videoId}
@@ -70,6 +76,7 @@ export const query = graphql`
         videoId
         title
         duration
+        publishedAt
       }
     }
   }
