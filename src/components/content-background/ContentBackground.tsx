@@ -14,7 +14,10 @@ type VideoType = {
 }
 
 const VIDEO_SPAWN = 7000
-const VIDEO_REMOVE = 30000
+const GROUP_SPAWN = 9500
+const FLOATER_REMOVE = 30000
+
+const MAX_ATTEMPTS_TO_SPAWN_NEW_FLOATER = 5
 
 export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
   const ref = useRef<HTMLDivElement>()
@@ -61,48 +64,19 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
     )
 
     const spawnVideo = () => {
-      let newVideoId: string
-      let newFloaters = {}
+      // get random video
+      let chosenVideo = videoObjects[Math.floor(Math.random() * videoObjects.length)]
+      while (floatersRef.current[chosenVideo.id]) {
+        chosenVideo = videoObjects[Math.floor(Math.random() * videoObjects.length)]
+      }
 
-      // 1 in 5 chance of spawning a group
-      if (Math.floor(Math.random() * 2) === 0) {
-        // get random group
-        // Jojo changed from 5 to 2 1-31-23
-        let chosenGroup = groupObjects[Math.floor(Math.random() * groupObjects.length)]
-
-        if (groupObjects.length >= 5) {
-          while (floatersRef.current[chosenGroup.id]) {
-            chosenGroup = groupObjects[Math.floor(Math.random() * groupObjects.length)]
-          }
-        }
-
-        newVideoId = chosenGroup.id
-
-        newFloaters = {
-          [chosenGroup.id]: {
-            image: `/images/${chosenGroup.image}.png`,
-            height: Math.floor(Math.random() * (90 - 10 + 1) + 10),
-            type: "group",
-          },
-          ...floatersRef.current,
-        }
-      } else {
-        // get random video
-        let chosenVideo = videoObjects[Math.floor(Math.random() * videoObjects.length)]
-        while (floatersRef.current[chosenVideo.id]) {
-          chosenVideo = videoObjects[Math.floor(Math.random() * videoObjects.length)]
-        }
-
-        newVideoId = chosenVideo.id
-
-        newFloaters = {
-          [chosenVideo.id]: {
-            image: chosenVideo.image,
-            height: Math.floor(Math.random() * (90 - 10 + 1) + 10),
-            type: "video",
-          },
-          ...floatersRef.current,
-        }
+      const newFloaters = {
+        [chosenVideo.id]: {
+          image: chosenVideo.image,
+          height: Math.floor(Math.random() * (90 - 10 + 1) + 10),
+          type: "video",
+        },
+        ...floatersRef.current,
       }
 
 
@@ -110,20 +84,63 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
 
       // remove the video
       setTimeout(() => {
-        const newVideos = {
+        const newFloaters = {
           ...floatersRef.current,
         }
 
-        delete newVideos[newVideoId]
+        delete newFloaters[chosenVideo.id]
 
-        setFloaters(newVideos)
-      }, VIDEO_REMOVE)
+        setFloaters(newFloaters)
+      }, FLOATER_REMOVE)
+    }
+
+    const spawnGroup = () => {
+      // get random group
+      let chosenGroup = groupObjects[Math.floor(Math.random() * groupObjects.length)]
+
+      let attempts = 0
+      while (floatersRef.current[chosenGroup.id] && attempts < MAX_ATTEMPTS_TO_SPAWN_NEW_FLOATER) {
+        chosenGroup = groupObjects[Math.floor(Math.random() * groupObjects.length)]
+        attempts++
+      }
+
+      if (attempts >= MAX_ATTEMPTS_TO_SPAWN_NEW_FLOATER) {
+        return
+      }
+
+      const newFloaters = {
+        [chosenGroup.id]: {
+          image: `/images/${chosenGroup.image}.png`,
+          height: Math.floor(Math.random() * (90 - 10 + 1) + 10),
+          type: "group",
+        },
+        ...floatersRef.current,
+      }
+
+
+      setFloaters(newFloaters)
+
+      // remove the group
+      setTimeout(() => {
+        const newFloaters = {
+          ...floatersRef.current,
+        }
+
+        delete newFloaters[chosenGroup.id]
+
+        setFloaters(newFloaters)
+      }, FLOATER_REMOVE)
     }
 
     spawnVideo()
+    spawnGroup()
+
     const videoInterval = setInterval(spawnVideo, VIDEO_SPAWN)
+    const groupInterval = setInterval(spawnGroup, GROUP_SPAWN)
+
     return () => {
       clearInterval(videoInterval)
+      clearInterval(groupInterval)
     }
   }, [floatersQuery])
 
