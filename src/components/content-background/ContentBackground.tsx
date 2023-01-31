@@ -65,8 +65,9 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
       let newFloaters = {}
 
       // 1 in 5 chance of spawning a group
-      if (Math.floor(Math.random() * 5) === 0) {
+      if (Math.floor(Math.random() * 2) === 0) {
         // get random group
+        // Jojo changed from 5 to 2 1-31-23
         let chosenGroup = groupObjects[Math.floor(Math.random() * groupObjects.length)]
 
         if (groupObjects.length >= 5) {
