@@ -35,6 +35,7 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
               url
             }
             videoId
+            publishedAt
           }
         }
         allYoutubeContentGroup {
@@ -48,13 +49,47 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
   )
 
   useEffect(() => {
-    const videoObjects: VideoType[] = floatersQuery.allYoutubeVideo.nodes.map(
-      // @ts-ignore
-      v => ({
-        image: v.thumbnail.url,
-        id: v.videoId
+    const weightedVideoObjects: VideoType[] = []
+    // sort newest to oldest
+    const sortedVideos = floatersQuery.allYoutubeVideo.nodes.sort((a: any, b: any) => {
+      return new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
+    })
+
+    // use a log curve to get the video weight
+    //   this means the first video will have a weight of 100 + 10
+    //   the last video will have a weight of 0 + 10
+    //   and a log curve in between, so newer videos will appear more frequently
+    //     https://www.desmos.com/calculator/lz631kek0g
+    // 
+    // the commented out function is also an option that uses a reverse
+    //   exponential, but I like the idea of the most recent video showing
+    //   way more often than, for example, the 5th video
+    const getVideoWeight = (videoNumber: number) => {
+      return Math.ceil(110 - (Math.log(videoNumber + 1) / Math.log(sortedVideos.length) * 100))
+      // return Math.ceil(100 + -1 * Math.pow(videoNumber / (sortedVideos.length / 10), 2)) + 10
+    }
+
+    for (let i = 0; i < sortedVideos.length; i++) {
+      const video = sortedVideos[i]
+      const weight = getVideoWeight(i)
+      console.log({
+        i,
+        weight
       })
-    )
+
+      const videoObject = {
+        image: video.thumbnail.url,
+        id: video.videoId
+      }
+
+      // add a copy of the video object for each weight for later randomness
+      for (let j = 0; j < weight; j++) {
+        weightedVideoObjects.push(videoObject)
+      }
+    }
+
+    console.log(weightedVideoObjects)
+
     const groupObjects: VideoType[] = floatersQuery.allYoutubeContentGroup.nodes.map(
       // @ts-ignore
       g => ({
@@ -65,9 +100,9 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
 
     const spawnVideo = () => {
       // get random video
-      let chosenVideo = videoObjects[Math.floor(Math.random() * videoObjects.length)]
+      let chosenVideo = weightedVideoObjects[Math.floor(Math.random() * weightedVideoObjects.length)]
       while (floatersRef.current[chosenVideo.id]) {
-        chosenVideo = videoObjects[Math.floor(Math.random() * videoObjects.length)]
+        chosenVideo = weightedVideoObjects[Math.floor(Math.random() * weightedVideoObjects.length)]
       }
 
       const newFloaters = {
@@ -133,14 +168,20 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
     }
 
     spawnVideo()
-    spawnGroup()
-
     const videoInterval = setInterval(spawnVideo, VIDEO_SPAWN)
-    const groupInterval = setInterval(spawnGroup, GROUP_SPAWN)
+
+    let groupInterval: ReturnType<typeof setInterval> | undefined = undefined;
+    if (groupObjects.length) {
+      spawnGroup()
+      const groupInterval = setInterval(spawnGroup, GROUP_SPAWN)
+    }
 
     return () => {
       clearInterval(videoInterval)
-      clearInterval(groupInterval)
+
+      if (groupInterval) {
+        clearInterval(groupInterval)
+      }
     }
   }, [floatersQuery])
 
