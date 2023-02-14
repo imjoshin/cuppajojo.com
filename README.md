@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.cuppajojo.com">
-    <img alt="Gatsby" src="./src/images/jojo-head-small" width="60" />
+    <img alt="CuppaJoJo" src="./src/images/jojo-head-small.png" width="60" />
   </a>
 </p>
 <h1 align="center">
