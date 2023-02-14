@@ -7,7 +7,7 @@
   top: 16px;
   max-width: 400px;
   max-height: 200px;
-  transition: left 0.5s ease-in-out, top 0.2s ease-in-out;
+  transition: top 0.2s ease-in-out;
   border-radius: 2rem;
   z-index: 999;
   overflow: hidden;
@@ -15,6 +15,10 @@
   box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.75);
+}
+
+.livePopupAnimate {
+  transition: left 0.5s ease-in-out, top 0.2s ease-in-out;
 }
 
 .livePopup:hover {
@@ -74,9 +78,12 @@
     max-height: 100px;
     margin-left: auto;
     margin-right: auto;
-    transition: top 0.5s ease-in-out;
     left: 0;
     right: 0;
+  }
+
+  .livePopupAnimate {
+    transition: top 0.5s ease-in-out;
   }
 
   .livePopup:hover {

@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-export type TwitchStatusType = { live: false } | {
+export type TwitchStatusType = { live: false, loading: boolean } | {
   live: true,
   user: string,
   game: string,
@@ -9,6 +9,7 @@ export type TwitchStatusType = { live: false } | {
   started: string,
   thumbnail: string,
   gameThumbnail: string,
+  loading: boolean,
 }
 
 const TwitchStatusContext = createContext<TwitchStatusType | undefined>(undefined);
@@ -16,7 +17,7 @@ const TwitchStatusContext = createContext<TwitchStatusType | undefined>(undefine
 
 
 function TwitchStatusProvider({ children }: { children: React.ReactNode }) {
-  const [twitchStatus, setTwitchStatus] = useState<TwitchStatusType>({ live: false });
+  const [twitchStatus, setTwitchStatus] = useState<TwitchStatusType>({ live: false, loading: true });
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -29,7 +30,10 @@ function TwitchStatusProvider({ children }: { children: React.ReactNode }) {
         })
         .then(res => res.json())
 
-      setTwitchStatus(response)
+      setTwitchStatus({
+        ...response,
+        loading: false,
+      })
     }
 
     fetchStatus()
