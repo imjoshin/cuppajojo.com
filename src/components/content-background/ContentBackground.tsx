@@ -88,8 +88,6 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
       }
     }
 
-    console.log(weightedVideoObjects)
-
     const groupObjects: VideoType[] = floatersQuery.allYoutubeContentGroup.nodes.map(
       // @ts-ignore
       g => ({
@@ -167,17 +165,22 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
       }, FLOATER_REMOVE)
     }
 
-    spawnVideo()
-    const videoInterval = setInterval(spawnVideo, VIDEO_SPAWN)
+    let videoInterval: ReturnType<typeof setInterval> | undefined = undefined;
+    if (sortedVideos.length) {
+      spawnVideo()
+      videoInterval = setInterval(spawnVideo, VIDEO_SPAWN)
+    }
 
     let groupInterval: ReturnType<typeof setInterval> | undefined = undefined;
     if (groupObjects.length) {
       spawnGroup()
-      const groupInterval = setInterval(spawnGroup, GROUP_SPAWN)
+      groupInterval = setInterval(spawnGroup, GROUP_SPAWN)
     }
 
     return () => {
-      clearInterval(videoInterval)
+      if (videoInterval) {
+        clearInterval(videoInterval)
+      }
 
       if (groupInterval) {
         clearInterval(groupInterval)
