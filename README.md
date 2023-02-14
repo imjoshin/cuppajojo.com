@@ -21,8 +21,6 @@
 
 2.  **Set up a new environmental variable `.env` file.**
 
-    Navigate into your new site’s directory and start it up.
-
     ```shell
     cp .env.example .env
     ```
@@ -48,8 +46,6 @@
     ```
 
 5.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
 
     ```shell
     yarn develop
