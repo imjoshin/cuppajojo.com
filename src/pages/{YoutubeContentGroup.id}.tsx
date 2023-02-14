@@ -3,6 +3,7 @@ import { graphql, HeadFC, PageProps, HeadProps } from "gatsby"
 import { Layout } from "../components/layout"
 import { SEO } from "../components/seo"
 import { VideoIcon } from "../components/video-icon"
+import { ContentGroupPreface } from "../components/content-group-preface"
 
 type DataProps = {
   youtubeContentGroup: {
@@ -48,6 +49,7 @@ export default function ContentGroupPage({ data }: PageProps<DataProps>) {
       <div style={titleStyle}>
         {data.youtubeContentGroup.name}
       </div>
+      <ContentGroupPreface name={data.youtubeContentGroup.name} />
       <div style={containerStyle}>
         {videos.map(video => (
           <VideoIcon
