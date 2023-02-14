@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     response = {
       online: true,
       address: MINECRAFT_ADDRESS,
-      motd: r.motd.html[0],
+      motd: r.motd.html.join(`<br />`),
       icon: r.icon,
       version: r.version,
       players,
