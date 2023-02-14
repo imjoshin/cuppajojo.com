@@ -1,10 +1,12 @@
 <p align="center">
-  <a href="https://www.cuppajojo.com">
-    <img alt="CuppaJoJo" src="./src/images/jojo-head-small.png" width="60" />
+  <a href="https://www.cuppajojo.com" target="_blank">
+    <img alt="CuppaJoJo" src="./src/images/jojo-head-small.png" width="150" />
   </a>
 </p>
 <h1 align="center">
-  CuppaJoJo.com
+  <a href="https://www.cuppajojo.com" target="_blank">
+    CuppaJoJo.com
+  </a>
 </h1>
 
 ## 🚀 Quick start
