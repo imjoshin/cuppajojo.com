@@ -1,3 +1,4 @@
+import fetch from "node-fetch"
 const MINECRAFT_ADDRESS = "mc.cuppajojo.com"
 
 export default async function handler(req, res) {
