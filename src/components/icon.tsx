@@ -7,6 +7,9 @@ import {
   FaTwitter,
   FaTiktok,
 } from "react-icons/fa"
+import {
+  GiMineWagon,
+} from "react-icons/gi"
 
 const ICON_MAP = {
   discord: FaDiscord,
@@ -15,6 +18,7 @@ const ICON_MAP = {
   youtube: FaYoutube,
   twitter: FaTwitter,
   tiktok: FaTiktok,
+  minecraft: GiMineWagon,
 }
 
 interface IconProps {

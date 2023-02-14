@@ -15,6 +15,7 @@ export const Socials = () => {
           nodes {
             icon
             name
+            path
             redirect
           }
         }
@@ -22,11 +23,11 @@ export const Socials = () => {
     `
   )
 
-  const socials = socialsQuery.allSocial.nodes as { icon: string, name: string, redirect: string }[]
+  const socials = socialsQuery.allSocial.nodes as { icon: string, name: string, redirect: string, path: string }[]
 
   return (
     <div className={styles.socials}>
-      {socials.map(s => <SocialButton icon={s.icon} key={s.name} name={s.name} href={s.redirect} highlight={s.icon === "twitch" && twitchStatus.live} />)}
+      {socials.map(s => <SocialButton icon={s.icon} key={s.name} name={s.name} href={s.redirect || s.path} highlight={s.icon === "twitch" && twitchStatus.live} />)}
     </div>
   )
 }

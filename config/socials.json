@@ -34,5 +34,10 @@
     "icon": "instagram",
     "path": "/instagram",
     "redirect": "https://www.instagram.com/cuppajojo_/"
+  },
+  {
+    "name": "Minecraft",
+    "icon": "minecraft",
+    "path": "/minecraft"
   }
 ]

@@ -26,7 +26,6 @@ const MinecraftDisplay = () => {
 }
 
 export const Minecraft = () => {
-  return null
   return (
     <MinecraftStatusProvider>
       <MinecraftDisplay />
