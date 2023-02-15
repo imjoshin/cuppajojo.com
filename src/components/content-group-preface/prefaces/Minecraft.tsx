@@ -74,7 +74,7 @@ const MinecraftDisplay = () => {
         </div>
       </div>
       <div className={styles.disclaimer}>
-        You must be <a href="/sub" target="_blank">subscribed</a> to CuppaJoJo to join.
+        <a href="/sub" target="_blank">Subscribe</a> to come play with us!
       </div>
       {playerSection}
     </div>
