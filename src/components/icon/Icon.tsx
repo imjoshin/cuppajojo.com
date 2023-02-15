@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import React from "react"
 import {
   FaDiscord,
@@ -8,6 +9,8 @@ import {
   FaTiktok,
 } from "react-icons/fa"
 
+import * as styles from "./Icon.module.css"
+
 const ICON_MAP = {
   discord: FaDiscord,
   instagram: FaInstagram,
@@ -17,6 +20,10 @@ const ICON_MAP = {
   tiktok: FaTiktok,
 }
 
+const STYLED_IMAGE_ICONS = [
+  'minecraft',
+]
+
 interface IconProps {
   i: keyof typeof ICON_MAP,
   size?: number,
@@ -25,6 +32,13 @@ interface IconProps {
 export const Icon = ({ i: iconName, size }: IconProps) => {
   const IconComponent = ICON_MAP[iconName]
 
-  // @ts-ignore
-  return <IconComponent size={size} />
+  if (IconComponent) {
+    return <IconComponent size={size} />
+  } else if (STYLED_IMAGE_ICONS.indexOf(iconName) >= 0) {
+    return (
+      <div className={clsx(styles[iconName], styles.imageIcon, "imageIcon")} />
+    )
+  }
+
+  return undefined
 }

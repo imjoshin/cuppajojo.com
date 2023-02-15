@@ -79,12 +79,14 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = ({ actions: { createNode }
 export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
   const { createRedirect, createPage } = actions;
 
-  socials.forEach(social =>
-    createRedirect({
-      fromPath: social.path,
-      toPath: social.redirect,
-    })
-  )
+  socials.forEach(social => {
+    if (social.redirect) {
+      createRedirect({
+        fromPath: social.path,
+        toPath: social.redirect,
+      })
+    }
+  })
 
   // TODO make this a config item
   createRedirect({

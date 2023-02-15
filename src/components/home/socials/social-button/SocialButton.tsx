@@ -18,7 +18,7 @@ export const SocialButton = ({ icon, name, href, highlight }: SocialButtonProps)
   const iconComponent = <Icon i={icon} size={70} />
 
   return (
-    <a href={href} target="_blank">
+    <a href={href} target={href.startsWith("/") ? undefined : "_blank"}>
       <div className={clsx(styles.socialButton, highlight && styles.socialButtonHighlight)}>
         <div className={styles.socialIcon}>
           {iconComponent}
