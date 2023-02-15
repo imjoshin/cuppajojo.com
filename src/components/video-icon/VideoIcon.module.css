@@ -9,6 +9,12 @@
   position: relative;
 }
 
+@media only screen and (max-width: 850px) {
+  .videoContainer {
+    margin: 24px;
+  }
+}
+
 .videoContainer:hover {
   top: 2px;
 }
