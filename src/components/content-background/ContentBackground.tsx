@@ -72,10 +72,6 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
     for (let i = 0; i < sortedVideos.length; i++) {
       const video = sortedVideos[i]
       const weight = getVideoWeight(i)
-      console.log({
-        i,
-        weight
-      })
 
       const videoObject = {
         image: video.thumbnail.url,
@@ -87,8 +83,6 @@ export const ContentBackground = ({ layers = 4 }: ContentBackgroundProps) => {
         weightedVideoObjects.push(videoObject)
       }
     }
-
-    console.log(weightedVideoObjects)
 
     const groupObjects: VideoType[] = floatersQuery.allYoutubeContentGroup.nodes.map(
       // @ts-ignore

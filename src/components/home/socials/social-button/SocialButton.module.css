@@ -11,6 +11,10 @@
   top: 4px;
 }
 
+.socialButton:hover .imageIcon {
+  background: var(--accent-color);
+}
+
 .socialButtonHighlight {
   animation-name: bounce;
   animation-duration: 4s;
